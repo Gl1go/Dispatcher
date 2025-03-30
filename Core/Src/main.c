@@ -56,8 +56,7 @@ static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USB_PCD_Init(void);
-void blinkLed1(void);
-void blinkLed2(void);
+extern void dispatch(void);
 
 /* USER CODE BEGIN PFP */
 
@@ -65,7 +64,7 @@ void blinkLed2(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-typedef void(*TaskSelection)(void);
+
 /* USER CODE END 0 */
 
 /**
@@ -76,8 +75,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-	TaskSelection taskList[] = {blinkLed1, blinkLed2};
-#define No_TASKS	(sizeof(taskList) / sizeof(TaskSelection));
+
 
   /* USER CODE END 1 */
 
@@ -104,7 +102,7 @@ int main(void)
   MX_USB_PCD_Init();
   /* USER CODE BEGIN 2 */
 
-  uint8_t currentTask = 0;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -112,9 +110,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  taskList[currentTask]();
-	  currentTask = (currentTask + 1) % No_TASKS;
-
+	  dispatch();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -343,23 +339,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-void blinkLed1(void){
-	static uint32_t lastTick = 0;
 
-	if(HAL_GetTick()-lastTick >= 200){
-		HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_8);
-		lastTick = HAL_GetTick();
-	}
-}
-
-void blinkLed2(void){
-	static uint32_t lastTick = 0;
-
-	if(HAL_GetTick()-lastTick >= 500){
-		HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_9);
-		lastTick = HAL_GetTick();
-	}
-}
 
 /* USER CODE END 4 */
 
