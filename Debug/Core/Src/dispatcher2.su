@@ -1,4 +1,4 @@
-../Core/Src/dispatcher2.c:34:6:Scheduler_Run	16	static
-../Core/Src/dispatcher2.c:46:6:blinkLed10	8	static
-../Core/Src/dispatcher2.c:51:6:blinkLed20	8	static
-../Core/Src/dispatcher2.c:56:6:blinkLed30	8	static
+../Core/Src/dispatcher2.c:34:6:Scheduler_Run	24	static
+../Core/Src/dispatcher2.c:44:6:blinkLed10	8	static
+../Core/Src/dispatcher2.c:49:6:blinkLed20	8	static
+../Core/Src/dispatcher2.c:54:6:blinkLed30	8	static

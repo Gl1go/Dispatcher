@@ -11,7 +11,7 @@
 void blinkLed10(void);
 void blinkLed20(void);
 void blinkLed30(void);
-void Scheduler_Run(void);
+void Scheduler_Run(uint32_t time);
 
 /* ---------------------------------- DEFINES ---------------------------------- */
 typedef struct {
@@ -31,9 +31,7 @@ Task_handle task[] = {
 };
 
 /* --------------------------------- SCHEDULER --------------------------------- */
-void Scheduler_Run(void){
-	uint32_t time = HAL_GetTick();
-
+void Scheduler_Run(uint32_t time){
 	for(uint8_t i = 0; i < NUM_TASKS; i++){
 		if(time - task[i].lastRun >= task[i].interval){
 			task[i].taskFunction();
