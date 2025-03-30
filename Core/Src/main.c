@@ -57,6 +57,7 @@ static void MX_I2C1_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USB_PCD_Init(void);
 extern void dispatch(void);
+extern void Scheduler_Run(void);
 
 /* USER CODE BEGIN PFP */
 
@@ -110,7 +111,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  dispatch();
+	  Scheduler_Run();
+	  //dispatch();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
